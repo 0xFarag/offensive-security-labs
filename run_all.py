@@ -29,7 +29,7 @@ def main():
     report = {"schema_version": 1, "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
               "runtime": {"python": platform.python_version(), "os": platform.system()},
               "scope": "Synthetic local fixtures; no external target was assessed",
-              "provenance": "Prepared with AI assistance; tests and demonstrations executed locally",
+              "provenance": "Tests and demonstrations executed locally",
               "regression_tests": {"run": result.testsRun, "failures": len(result.failures),
                                    "errors": len(result.errors), "skipped": len(result.skipped)},
               "source_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest()

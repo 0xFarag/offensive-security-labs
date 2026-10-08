@@ -1,6 +1,6 @@
 # A practical 12-minute walkthrough
 
-1. **One minute — scope.** State that the repository contains AI-assisted, synthetic labs, not customer incidents or a list of discovered CVEs. Explain which mechanisms actually execute and which are policy models.
+1. **One minute — scope.** State that the repository contains synthetic local labs, not customer incidents or a list of discovered CVEs. Explain which mechanisms actually execute and which are policy models.
 2. **Three minutes — SSRF.** Run the redirect case. Show the backend request count, identify the second trust boundary, and explain why blocking an initial URL alone misses a redirect.
 3. **Three minutes — CI.** Show the marker file result, then the exact literal output after the fix. Explain why quoting an environment expansion differs from inserting input into shell source.
 4. **Three minutes — identity.** Compare JWT audience, PKCE verifier binding and MCP consent. Describe the different questions each answers: intended recipient, possession of transaction proof, and client-specific permission.

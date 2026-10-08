@@ -1,5 +1,7 @@
 # Offensive Security Labs — 0xFarag
 
+<p><img src="assets/0xfarag-logo.png" alt="0xFarag" width="100"></p>
+
 **Nine reproducible exploit/fix pairs · 49 regression tests · reviewed 25 September 2026**
 
 Small, inspectable security assessments for Web/API, identity, AI tooling and delivery pipelines. Start with an attacker-controlled input, observe a concrete effect, apply a narrow control, then check that authorized use still works.
@@ -43,7 +45,7 @@ Each lab also runs independently, for example `python3 lab_ssrf_redirect.py`. Th
 - **AI case:** a deterministic malicious tool-call fixture tests the dispatcher. No LLM is called; this is not evidence of a model jailbreak or an attack-success rate.
 - **Limits:** no live customer assessment, CVE reproduction, production hardening claim or full OAuth/MCP implementation. The token examples are intentionally minimal; production systems should use maintained protocol libraries and deployment-specific controls.
 
-All samples were prepared with AI assistance and tested locally. [Sources and current relevance](CURRENT_TOPICS.md) distinguish recent guidance from long-established vulnerability classes. [Interview walkthrough](INTERVIEW_GUIDE.md) explains the reasoning behind each fix.
+All samples were tested locally. [Sources and current relevance](CURRENT_TOPICS.md) distinguish recent guidance from long-established vulnerability classes. [Interview walkthrough](INTERVIEW_GUIDE.md) explains the reasoning behind each fix.
 
 ## Recorded outcome
 

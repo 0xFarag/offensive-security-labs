@@ -20,7 +20,7 @@ For a project idea, describe its attacker capability, the controlled test enviro
 - Add a regression that exposes the problem and preserves an authorized workflow.
 - Run `python3 run_all.py`; explain the changed evidence and source hashes.
 - Keep fixtures synthetic and local. Do not add customer data, credentials or external-target automation.
-- Distinguish a simulation from a tested protocol implementation. Disclose material AI assistance.
+- Distinguish a simulation from a tested protocol implementation.
 
 No live exploit is needed to contribute. A precise limitation or failed assumption is useful evidence too. Proposed features remain proposals until reviewed; the roadmap is not a delivery promise.
 

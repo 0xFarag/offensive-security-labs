@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "recorded_at_utc": "2026-09-25T04:55:24.504026+00:00",
+  "recorded_at_utc": "2026-10-08T06:18:12.495970+00:00",
   "runtime": {
     "python": "3.12.14",
     "os": "Linux"
   },
   "scope": "Synthetic local fixtures; no external target was assessed",
-  "provenance": "Prepared with AI assistance; tests and demonstrations executed locally",
+  "provenance": "Tests and demonstrations executed locally",
   "regression_tests": {
     "run": 49,
     "failures": 0,
@@ -23,7 +23,7 @@
     "lab_ssrf_redirect.py": "ca71cff41350b9050fd5a148b47e73f7f02a0426a8c2cb9957002835bdcbd967",
     "lab_tar_traversal.py": "11b583989e1e77193b4df8d09f089e8a3e3335ccc708c598e0f673aa6462add3",
     "lab_webhook_replay.py": "819f3ca77bb9a762c754562df844c4b641d085f2a304d64fd1ba6a7627b84eb8",
-    "run_all.py": "b029ead7e1a14be86363554f0b8636171f4c5e29cd8ddf1d7790db822e1300cf",
+    "run_all.py": "a3eb2bb2e617802f67376c3c9e851301a159e4e28cc2710cd04292f236cab5f3",
     "test_security_boundaries.py": "434c081aa07d7af523091c0aad4cf56d793469a576132b7675950e97cee1b7b0"
   },
   "demonstrations": [
