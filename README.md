@@ -67,3 +67,7 @@ Related work: [API Authorization Lab](https://github.com/0xFarag/api-authorizati
 ## Build on this
 
 Found a missed edge case? Open an issue with the lab name, Python/OS version, command, expected result and observed result. Small, reproducible findings and focused pull requests are especially useful. See [contribution notes](CONTRIBUTING.md) and the [roadmap](ROADMAP.md). Collaboration enquiries: [LinkedIn](https://www.linkedin.com/in/nasser-aldin-farag-974697412/).
+
+## Rights and permissions
+
+Copyright © 2026 Nasser Aldin Farag (0xFarag). Rights in his own protectable contributions remain reserved, subject to permissions already granted. The existing [MIT LICENSE](LICENSE) remains in force. [Owner notice](NOTICE.txt) · [Personal branding and AuthzLedger rights](https://github.com/0xFarag/0xFarag/blob/main/AUTHZLEDGER_RIGHTS.md).
